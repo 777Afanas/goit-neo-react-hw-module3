@@ -1,0 +1,23 @@
+.searchBar {
+    /* width: 392px; */
+    /* width: 480px; */
+    padding: 8px 16px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+
+}
+
+.textInput {
+    /* border: none; */
+    /* border-radius: 8px; */
+    /* width: 360px; */
+    width: 480px;
+    height: 36px;
+    outline: 2px solid #212121;
+    border: 2px solid transparent;
+    border-radius: 4px;
+}
