@@ -1,12 +1,12 @@
 import Contact from '../Contact/Contact';
 import style from './ContactList.module.css';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onDelete }) => {
     return (
         <ul>
             {contacts.map((contact) => (
                 <li className={style.item} key={contact.id}>
-                <Contact data={contact} />
+                    <Contact data={contact} onDelete={onDelete} />
             </li>))}
         </ul>   
     );
