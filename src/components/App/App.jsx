@@ -11,10 +11,13 @@ const App = () => {
     const savedContacts = window.localStorage.getItem("contacts");
     if (savedContacts !== null) {
       return JSON.parse(savedContacts);
-    } else {
-      return initialContacts;
     }
+      return initialContacts;      
   });
+
+  useEffect(() => {
+    window.localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const addContact = (newContact) => {
     setContacts((prevContacts) => {
@@ -24,21 +27,10 @@ const App = () => {
 
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
-      return prevContacts.filter((contact) =>
-        contact.id !== contactId);
+      return prevContacts.filter((contact) => contact.id !== contactId);
     });
   };
 
-  // useEffect(() => {
-  //   window.localStorage.setItem("saved-feedback", JSON.stringify(values));
-  // }, [values]);
-
-  // const updateFeedback = (feedbackType) => {
-  //   setValues({
-  //     ...values,
-  //     [feedbackType]: values[feedbackType] + 1,
-  //   });
-  // };
   const visibleContacts = contacts.filter((contact) =>
     contact.name?.toLowerCase().includes(search?.toLowerCase()),
   );
@@ -46,9 +38,17 @@ const App = () => {
   return (
     <div className={style.app}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
-      <SearchBox value={search} onSearch={setSearch} />
-      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
+      <div className={style.sidebar}>
+        <ContactForm onAdd={addContact} />
+        <SearchBox           
+          value={search}
+          onSearch={setSearch}
+        />
+      </div> 
+      <ContactList        
+        contacts={visibleContacts}
+        onDelete={deleteContact}
+      />
     </div>
   );
 };

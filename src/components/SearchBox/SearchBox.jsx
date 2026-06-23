@@ -6,7 +6,7 @@ const SearchBox = ({ value, onSearch }) => {
       <p>Find contacts by name</p>
       <input
         type="text"
-        className={style.textInput}
+        className={style.searchInput}
         value={value}
         onChange={(e) => onSearch(e.target.value)}
       />
